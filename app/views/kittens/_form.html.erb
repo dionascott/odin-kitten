@@ -1,0 +1,17 @@
+<%= form_for @kitten do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :age %>
+  <%= f.select :age, (0..35).map{ |i| [i, i] } %>
+
+  <%= f.label :cuteness %>
+  <%= f.select :cuteness, @cuteness %>
+
+  <%= f.label :softness %>
+  <%= f.select :softness, @softness %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,24 @@
+<h2>All Kittens</h2>
+<% if @kittens.many? %>
+  <% @kittens.each do |k| %>
+  <div id="kitten-<%=k.name%>">
+    <div>Name: <%= k.name %></div>
+    <div>Age: <%= k.age %></div>
+    <div>Cuteness: <%= k.cuteness %></div>
+    <div>softness: <%= k.softness %></div>
+    <div><%= link_to "Edit #{k.name}", edit_kitten_path(k.id) %></div>
+    <div><%= link_to "Delete #{k.name}", kitten_path(k.id), method: :delete, data: { confirm: 'Are you sure?'} %></div>
+  </div>
+<br />
+  <% end %>
+<% elsif @kitten.any? %>
+<h2><%= @kitten.name %></h2>
+<div>Age: <%= @kitten.age %></div>
+<div>Cuteness: <%= @kitten.cuteness %></div>
+<div>softness: <%= @kitten.softness %></div>
+<div><%= link_to "Edit #{@kitten.name}", edit_kitten_path(@kitten) %></div>
+<div><%= link_to "Delete #{@kitten.name}", kitten_path(@kitten), method: :delete, data: { confirm: 'Are you sure?'} %></div>
+<% else %>
+  No kittens here.
+<% end %>
+<div><%= link_to "New Kitten", new_kitten_path %></div>
